@@ -44,6 +44,7 @@ solar$medium <- predict(medium.fit, newdata=data)
 data$SolarMedium <- solar$medium
 data$SolarResiduals <- data$Solar_power - data$SolarMedium
 
+label <- data$SolarResiduals
 
 
 # Residuals correction
@@ -143,3 +144,4 @@ solar$final <- rbind(mix$prediction, last_pred)
 plot(mix)
 
 plot_predictions(solar$final, test[available,], "Solar_power")
+
