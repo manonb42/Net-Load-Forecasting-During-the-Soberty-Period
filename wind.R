@@ -40,6 +40,7 @@ wind$medium <- predict(medium.fit, newdata=data)
 data$WindMedium <- solar$medium
 data$WindResiduals <- data$Wind_power - data$WindMedium
 
+label <- data$WindResiduals
 
 
 # Residuals correction
@@ -60,9 +61,9 @@ all_vars <- c(features, categorical_vars)
 # Gradient boosting model
 
 ## LightGBM
-wind$lgb <- data$SolarMedium[test_idx] + lightbm(train, label[train_idx], test, all_vars)
+wind$lgb <- data$WindMedium[test_idx] + lightbm(train, label[train_idx], test, all_vars)
 
-wind$lgb_ol <- data$SolarMedium[test_idx] + semi_online(
+wind$lgb_ol <- data$WindMedium[test_idx] + semi_online(
   function (train, label, test) { lightbm(train, label, test, all_vars) },
   data, label, nrow(train)+1)
 
@@ -150,10 +151,8 @@ wind$qxgb <- data$WindMedium[test_idx] + xgb_rsme(train, label[train_idx], test)
 # Aggregation
 
 experts <- cbind(
-  xgb    = wind$xgb,
   xgb_ol = wind$xgb_ol,
   qxgb   = wind$qxgb,
-  lgb    = wind$lgb,
   lgb_ol = wind$lgb_ol,
   qrf_ol = wind$qrf_ol,
   long   = wind$long
@@ -171,3 +170,4 @@ wind$final <- rbind(mix$prediction, last_pred)
 plot(mix)
 
 plot_predictions(wind$final, test[available,], "Wind_power")
+
