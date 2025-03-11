@@ -37,7 +37,7 @@ medium.fit <- gam(Wind_power ~
     data = train)
 
 wind$medium <- predict(medium.fit, newdata=data)
-data$WindMedium <- solar$medium
+data$WindMedium <- wind$medium
 data$WindResiduals <- data$Wind_power - data$WindMedium
 
 label <- data$WindResiduals
