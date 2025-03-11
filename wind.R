@@ -164,7 +164,7 @@ mix <- predict(mix, newexpert = experts[available,], newY = test$Wind_power[avai
 last_pred <- predict(mix, newexperts = experts[-available, ], online = FALSE, type = 'response')
 
 wind$final <- rbind(mix$prediction, last_pred)
-
+predictions.wind <- wind$final
 
 # Oracle
 plot(mix)
