@@ -8,7 +8,7 @@ library(lightgbm)
 
 source("init.R")
 
-
+tau = 0.8
 wind <- list()
 
 # generalized additive model
