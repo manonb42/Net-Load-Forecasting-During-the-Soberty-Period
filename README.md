@@ -1,5 +1,7 @@
 test.csv et train.csv : données de test et d'entrainement 
 
+ipc.csv : indice des prix à la consommation d'électricité et global (données insee)
+
 submission.csv : fichier contenant la soumission finale 
 
 init.R : permet d'initialiser les données
