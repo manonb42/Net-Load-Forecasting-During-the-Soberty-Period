@@ -118,7 +118,7 @@ xgb_quant <- function(train, label, test){ xgboost_quant(train, label, test, all
 solar$xgb <- data$SolarMedium[test_idx] + xgb_rsme(train, label[train_idx], test)
 solar$xgb_ol <- data$SolarMedium[test_idx] + semi_online(xgb_rsme, data, label, nrow(train)+1)
 
-solar$qxgb <- data$SolarMedium[test_idx] + xgb_rsme(train, label[train_idx], test)
+solar$qxgb <- data$SolarMedium[test_idx] + xgb_quant(train, label[train_idx], test)
 
 # Aggregation
 
