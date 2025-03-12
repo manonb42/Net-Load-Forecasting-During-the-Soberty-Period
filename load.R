@@ -114,7 +114,7 @@ load$xgb <- data$LoadMedium[test_idx] + xgb_rsme(train, label[train_idx], test)
 load$xgb_ol <- data$LoadMedium[test_idx] + semi_online(xgb_rsme, data, label, nrow(train)+1)
 
 
-load$qxgb <- data$LoadMedium[test_idx] + xgb_rsme(train, label[train_idx], test)
+load$qxgb <- data$LoadMedium[test_idx] + xgb_quant(train, label[train_idx], test)
 
 
 # Aggregation
