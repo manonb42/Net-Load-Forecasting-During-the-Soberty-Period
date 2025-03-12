@@ -146,7 +146,7 @@ xgb_quant <- function(train, label, test){ xgboost_quant(train, label, test, all
 wind$xgb <- data$WindMedium[test_idx] + xgb_rsme(train, label[train_idx], test)
 wind$xgb_ol <- data$WindMedium[test_idx] + semi_online(xgb_rsme, data, label, nrow(train)+1)
 
-wind$qxgb <- data$WindMedium[test_idx] + xgb_rsme(train, label[train_idx], test)
+wind$qxgb <- data$WindMedium[test_idx] + xgb_quant(train, label[train_idx], test)
 
 # Aggregation
 
