@@ -68,20 +68,6 @@ wind$lgb_ol <- data$WindMedium[test_idx] + semi_online(
   data, label, nrow(train)+1)
 
 
-# GBM
-
-gbm.fit <- train(Load ~
-      Temp
-    + Load.1 + Load.7
-    + WeekDays + WeekOfYear
-    + Holiday + HolidayA + HolidayB + HolidayC,
-    data = train,
-    method = "gbm")
-
-wind$gbm <- predict(gbm.fit, newdata = test)
-
-
-
 
 # autoregressive correction
 
